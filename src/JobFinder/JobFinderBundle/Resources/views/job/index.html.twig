@@ -1,0 +1,31 @@
+{% extends 'JobFinderJobFinderBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/jobfinderjobfinder/css/jobs.css') }}"
+          type="text/css" media="all" />
+{% endblock %}
+
+{% block body %}
+    <div id="jobs">
+        <table class="jobs">
+            {% for job in jobs %}
+                <tr class="{{ cycle(['even', 'odd'], loop.index) }}">
+                    <td class="location">{{ job.location }}</td>
+                    <td class="position">
+                        <a href="{{ path('job_show', { 'id': job.id, 'company': job.companyslug, 'location': job.locationslug, 'position': job.positionslug }) }}">
+                            {{ job.position }}
+                        </a>
+                    </td>
+                    <td class="company">{{ job.company }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('job_new') }}">Create a new job</a>
+        </li>
+    </ul>
+{% endblock %}

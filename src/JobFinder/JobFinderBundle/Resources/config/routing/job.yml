@@ -1,0 +1,26 @@
+job_index:
+    path:     /
+    defaults: { _controller: "JobFinderJobFinderBundle:Job:index" }
+    methods:  GET
+
+job_show:
+    path:     /{company}/{location}/{id}/{position}
+    defaults: { _controller: "JobFinderJobFinderBundle:Job:show" }
+    methods:  GET
+    requirements:
+                id: \d+
+
+job_new:
+    path:     /new
+    defaults: { _controller: "JobFinderJobFinderBundle:Job:new" }
+    methods:  [GET, POST]
+
+job_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "JobFinderJobFinderBundle:Job:edit" }
+    methods:  [GET, POST]
+
+job_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "JobFinderJobFinderBundle:Job:delete" }
+    methods:  DELETE
